@@ -28,6 +28,7 @@ body {
   margin: 36px auto;
 }
 
+
 /* HEADER */
 
 .masthead {
@@ -52,6 +53,7 @@ body {
   letter-spacing: 2px;
   color: #59666d;
 }
+
 
 /* HERO */
 
@@ -95,6 +97,9 @@ body {
   line-height: 1.6;
 }
 
+
+/* ALBUM HEADING */
+
 .album-heading {
   display: flex;
   justify-content: space-between;
@@ -117,6 +122,7 @@ body {
   white-space: nowrap;
 }
 
+
 /* COLLECTION STATISTICS */
 
 .archive-stats {
@@ -135,12 +141,14 @@ body {
   white-space: nowrap;
 }
 
+
 /* ARCHIVE LIST */
 
 .archive-list {
   display: grid;
   gap: 12px;
 }
+
 
 /* DISC CARD */
 
@@ -207,6 +215,7 @@ body {
   color: #8b9396;
 }
 
+
 /* BUTTON */
 
 .button {
@@ -225,6 +234,7 @@ body {
 .button:hover {
   background: #566a73;
 }
+
 
 /* DISC SPECIFICATIONS */
 
@@ -258,6 +268,48 @@ body {
   font-size: 17px;
   letter-spacing: .5px;
 }
+
+.spec strong small {
+  display: block;
+  margin-top: 5px;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  color: #697479;
+}
+
+
+/* CONTENT CARD */
+
+.content-card {
+  position: relative;
+  margin-top: 24px;
+  background: #eceeeb;
+  border: 1px solid #a6acad;
+  box-shadow:
+    4px 4px 0 rgba(70,78,82,.14),
+    inset 0 1px rgba(255,255,255,.7);
+}
+
+.content-heading {
+  padding: 20px;
+}
+
+.content-heading h2 {
+  margin: 0 0 4px;
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.content-heading .album-heading {
+  margin-top: 0;
+}
+
+.content-heading .album-title {
+  font-size: 21px;
+}
+
 
 /* TRACK LIST — MINI-DISC INSERT CARD */
 
@@ -322,6 +374,7 @@ body {
   color: #727878;
 }
 
+
 /* BACK NAVIGATION */
 
 .back {
@@ -340,6 +393,7 @@ body {
   text-decoration: underline;
 }
 
+
 /* FOOTER */
 
 footer {
@@ -351,6 +405,7 @@ footer {
   letter-spacing: 1px;
   color: #697479;
 }
+
 
 /* MOBILE */
 
@@ -386,15 +441,16 @@ footer {
     display: none;
   }
 
+  .album-heading {
+    align-items: flex-start;
+  }
+
   .archive-stats {
     flex-wrap: wrap;
     gap: 10px 18px;
   }
-
-    .album-heading {
-    align-items: flex-start;
-  }
 }
+
 
 @media (max-width: 420px) {
 
@@ -410,5 +466,7 @@ footer {
   .tracklist li {
     grid-template-columns: 38px 1fr;
     padding: 12px;
+    line-height: 1.5;
   }
+
 }
