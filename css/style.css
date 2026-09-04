@@ -360,26 +360,55 @@ body {
 
 .tracklist li {
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 48px minmax(0, 1fr);
+  grid-template-rows: auto auto;
   align-items: center;
-  min-height: 32px;
-  padding: 0 16px;
+  min-height: 46px;
+  padding: 5px 16px;
   counter-increment: tracks;
   border-bottom: none;
   font-family: "Courier New", monospace;
   font-size: 13px;
-  line-height: 32px;
+  line-height: 1.2;
   color: #34383a;
 }
 
 .tracklist li:last-child {
-  padding-bottom: 2px;
+  padding-bottom: 7px;
 }
 
 .tracklist li::before {
   content: counter(tracks, decimal-leading-zero);
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: center;
   font-size: 11px;
   color: #727878;
+}
+
+.track-title {
+  display: block;
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 18px;
+}
+
+.track-meta {
+  display: block;
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: .5px;
+  color: #697479;
 }
 
 
@@ -457,6 +486,11 @@ footer {
     flex-wrap: wrap;
     gap: 10px 18px;
   }
+
+  .tracklist li {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+
 }
 
 
@@ -472,9 +506,9 @@ footer {
   }
 
   .tracklist li {
-    grid-template-columns: 38px 1fr;
-    padding: 12px;
-    line-height: 1.5;
+    grid-template-columns: 38px minmax(0, 1fr);
+    padding: 8px 12px;
+    min-height: 46px;
   }
 
 }
