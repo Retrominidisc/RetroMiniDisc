@@ -131,6 +131,103 @@ async function loadDisc() {
 
 
     /*
+     * Look up an album's original release year
+     * from MusicBrainz when it has not been entered
+     * manually in the archive.
+     *
+     * MusicBrainz release groups represent the
+     * overall album rather than an individual pressing
+     * or reissue, so first-release-date is appropriate
+     * for our archive.
+     */
+
+    async function getAlbumReleaseYear(artist, title) {
+
+      if (!artist || !title) {
+        return null;
+      }
+
+      try {
+
+        const query =
+          `artist:"${artist}" AND releasegroup:"${title}"`;
+
+        const url =
+          `https://musicbrainz.org/ws/2/release-group/` +
+          `?query=${encodeURIComponent(query)}` +
+          `&fmt=json` +
+          `&limit=5`;
+
+        const response =
+          await fetch(url, {
+            headers: {
+              "Accept": "application/json"
+            }
+          });
+
+        if (!response.ok) {
+          return null;
+        }
+
+        const result =
+          await response.json();
+
+        const matches =
+          Array.isArray(result["release-groups"])
+            ? result["release-groups"]
+            : [];
+
+        if (!matches.length) {
+          return null;
+        }
+
+
+        /*
+         * Prefer the highest-scoring result that has
+         * a first release date.
+         */
+
+        const match =
+          matches.find(
+            item =>
+              item["first-release-date"]
+          );
+
+        if (!match) {
+          return null;
+        }
+
+        const releaseDate =
+          match["first-release-date"];
+
+        const year =
+          releaseDate.match(/^\d{4}/);
+
+        return year
+          ? year[0]
+          : null;
+
+      } catch (error) {
+
+        /*
+         * MusicBrainz is an enhancement, not a
+         * dependency. If the lookup fails, simply
+         * leave the release year blank.
+         */
+
+        console.warn(
+          `MusicBrainz lookup failed for ${artist} — ${title}`,
+          error
+        );
+
+        return null;
+
+      }
+
+    }
+
+
+    /*
      * Build the Groups.
      */
 
@@ -291,16 +388,27 @@ async function loadDisc() {
 
 
         /*
-         * Build the complete Group.
+         * Use a stored release year when available.
          *
-         * The header and its track listing are kept
-         * together inside one group block so the
-         * separation between groups is clearer.
+         * For albums without one, the initial heading
+         * is rendered without a year. The MusicBrainz
+         * lookup below can then add it automatically.
+         */
+
+        const releaseYear =
+          group.release_year || "";
+
+
+        /*
+         * Build the complete Group.
          */
 
         return `
 
-          <section class="group-block">
+          <section
+            class="group-block"
+            data-group-index="${index}"
+          >
 
             <section class="content-card">
 
@@ -337,15 +445,16 @@ async function loadDisc() {
                   </div>
 
 
-                  ${
-                    group.release_year
-                      ? `
-                        <div class="release-year">
-                          ${group.release_year}
-                        </div>
-                      `
-                      : ""
-                  }
+                  <div
+                    class="release-year"
+                    ${
+                      releaseYear
+                        ? ""
+                        : 'style="display:none"'
+                    }
+                  >
+                    ${releaseYear}
+                  </div>
 
                 </div>
 
@@ -361,6 +470,67 @@ async function loadDisc() {
         `;
 
       }).join("");
+
+
+    /*
+     * Fetch missing release years for albums.
+     *
+     * This happens after the page has rendered so
+     * the archive itself is immediately visible.
+     */
+
+    const albumLookups =
+      groups.map(async (group, index) => {
+
+        if (
+          !group.type ||
+          group.type.toUpperCase() !== "ALBUM" ||
+          group.release_year
+        ) {
+          return;
+        }
+
+
+        const year =
+          await getAlbumReleaseYear(
+            group.artist,
+            group.title
+          );
+
+
+        if (!year) {
+          return;
+        }
+
+
+        const groupBlock =
+          groupsContainer.querySelector(
+            `[data-group-index="${index}"]`
+          );
+
+        if (!groupBlock) {
+          return;
+        }
+
+
+        const releaseYearElement =
+          groupBlock.querySelector(".release-year");
+
+        if (!releaseYearElement) {
+          return;
+        }
+
+
+        releaseYearElement.textContent =
+          year;
+
+        releaseYearElement.style.display =
+          "";
+
+      });
+
+
+    await Promise.all(albumLookups);
 
 
     /*
