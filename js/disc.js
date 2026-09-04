@@ -276,64 +276,72 @@ async function loadDisc() {
 
 
         /*
-         * Build the Group header.
+         * Build the complete Group.
+         *
+         * The header and its track listing are kept
+         * together inside one group block so the
+         * separation between groups is clearer.
          */
 
         return `
 
-          <section class="content-card">
+          <section class="group-block">
 
-            <div class="section-heading">
+            <section class="content-card">
 
-              <span>
-                GROUP / ${groupNumber}
-              </span>
+              <div class="section-heading">
 
-              <span>
-                ${groupType}
-              </span>
+                <span>
+                  GROUP / ${groupNumber}
+                </span>
 
-            </div>
+                <span>
+                  ${groupType}
+                </span>
 
-
-            <div class="content-heading">
-
-              ${
-                artist
-                  ? `
-                    <h2>
-                      ${artist}
-                    </h2>
-                  `
-                  : ""
-              }
+              </div>
 
 
-              <div class="album-heading">
-
-                <div class="album-title">
-                  ${title}
-                </div>
-
+              <div class="content-heading">
 
                 ${
-                  group.release_year
+                  artist
                     ? `
-                      <div class="release-year">
-                        ${group.release_year}
-                      </div>
+                      <h2>
+                        ${artist}
+                      </h2>
                     `
                     : ""
                 }
 
+
+                <div class="album-heading">
+
+                  <div class="album-title">
+                    ${title}
+                  </div>
+
+
+                  ${
+                    group.release_year
+                      ? `
+                        <div class="release-year">
+                          ${group.release_year}
+                        </div>
+                      `
+                      : ""
+                  }
+
+                </div>
+
               </div>
 
-            </div>
+            </section>
+
+
+            ${trackList}
 
           </section>
-
-
-          ${trackList}
 
         `;
 
