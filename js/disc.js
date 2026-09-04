@@ -151,6 +151,10 @@ async function loadDisc() {
             : "GROUP";
 
 
+        const isAlbum =
+          groupType === "ALBUM";
+
+
         const artist =
           group.artist || "";
 
@@ -169,11 +173,17 @@ async function loadDisc() {
             : [];
 
 
+        const trackListClass =
+          isAlbum
+            ? "tracklist tracklist-album"
+            : "tracklist tracklist-compilation";
+
+
         const trackList =
           tracks.length > 0
             ? `
 
-              <section class="tracklist">
+              <section class="${trackListClass}">
 
                 <div class="section-heading">
 
@@ -202,6 +212,11 @@ async function loadDisc() {
                      * title
                      * artist
                      * album
+                     *
+                     * Album tracks normally only contain
+                     * the track title because artist and
+                     * album are already shown in the
+                     * group heading.
                      */
 
                     const trackTitle =
