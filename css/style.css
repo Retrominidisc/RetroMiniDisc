@@ -325,14 +325,7 @@ body {
   position: relative;
   margin-top: 24px;
   padding: 0;
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 45px,
-      rgba(91, 104, 108, .16) 46px
-    ),
-    #eeece4;
+  background: #eeece4;
   border: 1px solid #b9b8b0;
   box-shadow:
     4px 4px 0 rgba(70, 78, 82, .14),
@@ -356,6 +349,14 @@ body {
   padding: 0;
   list-style: none;
   counter-reset: tracks;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 45px,
+      rgba(91, 104, 108, .16) 46px
+    );
 }
 
 .tracklist li {
