@@ -546,9 +546,6 @@ async function loadDisc() {
     document.getElementById("disc-title").textContent =
       "Disc unavailable";
 
-    document.getElementById("disc-description").textContent =
-      error.message;
-
     document.getElementById("groups").innerHTML =
       "";
 
