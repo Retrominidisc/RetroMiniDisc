@@ -280,7 +280,7 @@ body {
 }
 
 
-/* CONTENT CARD */
+/* GROUP CARD */
 
 .content-card {
   position: relative;
@@ -288,12 +288,20 @@ body {
   background: #eceeeb;
   border: 1px solid #a6acad;
   box-shadow:
-    4px 4px 0 rgba(70,78,82,.14),
+    4px 4px 0 rgba(70, 78, 82, .14),
     inset 0 1px rgba(255,255,255,.7);
 }
 
 .content-heading {
   padding: 20px;
+}
+
+.group-type {
+  margin-bottom: 7px;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #697479;
 }
 
 .content-heading h2 {
