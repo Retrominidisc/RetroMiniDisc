@@ -64,6 +64,94 @@ body {
   line-height: 1.6;
 }
 
+.album-title {
+  margin: 4px 0 10px;
+  font-size: 23px;
+  font-style: italic;
+  color: #59666d;
+}
+
+/* DISC SPECIFICATIONS */
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin: 20px 0;
+  background: #9da5a7;
+  border: 1px solid #9da5a7;
+}
+
+.spec {
+  padding: 18px;
+  background: #eceeeb;
+}
+
+.spec span {
+  display: block;
+  margin-bottom: 7px;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #697479;
+}
+
+.spec strong {
+  display: block;
+  font-family: "Arial Narrow", Tahoma, sans-serif;
+  font-size: 17px;
+  letter-spacing: .5px;
+}
+
+/* TRACK LIST */
+
+.tracklist {
+  background: #eceeeb;
+  border: 1px solid #9da5a7;
+  box-shadow: 4px 4px 0 rgba(70, 78, 82, .18);
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #d0d4d3;
+  border-bottom: 1px solid #9da5a7;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #59666d;
+}
+
+.tracklist ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: tracks;
+}
+
+.tracklist li {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  counter-increment: tracks;
+  padding: 13px 16px;
+  border-bottom: 1px solid #d0d4d3;
+  line-height: 1.4;
+}
+
+.tracklist li:last-child {
+  border-bottom: none;
+}
+
+.tracklist li::before {
+  content: counter(tracks, decimal-leading-zero);
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: #697479;
+}
+
+/* BUTTONS / NAVIGATION */
+
 .disc-card {
   display: grid;
   grid-template-columns: 100px 1fr auto;
@@ -125,6 +213,22 @@ body {
   background: #566a73;
 }
 
+.back {
+  margin: 22px 0;
+}
+
+.back a {
+  color: #4d5960;
+  text-decoration: none;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.back a:hover {
+  text-decoration: underline;
+}
+
 footer {
   margin-top: 28px;
   padding: 12px 14px;
@@ -134,6 +238,8 @@ footer {
   letter-spacing: 1px;
   color: #697479;
 }
+
+/* MOBILE */
 
 @media (max-width: 650px) {
   .masthead {
@@ -153,4 +259,28 @@ footer {
   .button {
     justify-self: start;
   }
-    }
+
+  .spec-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 420px) {
+  .shell {
+    width: min(100% - 20px, 920px);
+    margin: 20px auto;
+  }
+
+  .spec-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tracklist li {
+    grid-template-columns: 38px 1fr;
+    padding: 12px;
+  }
+}
