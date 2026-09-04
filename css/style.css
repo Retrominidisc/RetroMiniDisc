@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #d8d9d6;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Verdana, Arial, sans-serif;
+  color: #252a2d;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.45) 25%, transparent 25%) 0 0 / 8px 8px,
+    #d8d9d6;
+}
+
+.shell {
+  width: min(920px, calc(100% - 32px));
+  margin: 36px auto;
+}
+
+.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 10px 14px;
+  border-bottom: 3px solid #4d5960;
+}
+
+.brand {
+  font-family: "Arial Narrow", Tahoma, sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+.tagline,
+.eyebrow {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #59666d;
+}
+
+.hero {
+  margin: 28px 0 20px;
+  padding: 28px;
+  background: rgba(242, 243, 240, .88);
+  border: 1px solid #aeb3b2;
+  box-shadow: 4px 4px 0 rgba(70, 78, 82, .18);
+}
+
+.hero h1 {
+  margin: 8px 0;
+  font-size: clamp(30px, 6vw, 52px);
+  font-weight: normal;
+  letter-spacing: -2px;
+}
+
+.hero p {
+  max-width: 620px;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.disc-card {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 22px;
+  background: #eceeeb;
+  border: 1px solid #9da5a7;
+  box-shadow: 4px 4px 0 rgba(70, 78, 82, .18);
+}
+
+.disc-number {
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #4b5960;
+}
+
+.disc-info h2 {
+  margin: 5px 0;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.disc-info h2 a {
+  color: #252a2d;
+  text-decoration: none;
+}
+
+.disc-info h2 a:hover {
+  text-decoration: underline;
+}
+
+.disc-info p {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #667176;
+}
+
+.disc-info p span {
+  margin: 0 5px;
+  color: #8b9396;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 14px;
+  background: #687d87;
+  color: white;
+  text-decoration: none;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  border: 2px solid #4d5d65;
+}
+
+.button:hover {
+  background: #566a73;
+}
+
+footer {
+  margin-top: 28px;
+  padding: 12px 14px;
+  border-top: 1px solid #9da5a7;
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #697479;
+}
+
+@media (max-width: 650px) {
+  .masthead {
+    display: block;
+  }
+
+  .tagline {
+    display: block;
+    margin-top: 8px;
+  }
+
+  .disc-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .button {
+    justify-self: start;
+  }
+    }
