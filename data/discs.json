@@ -1,6 +1,4 @@
 {
-  "discs": [
-    {
   "id": "MD-001",
   "brand": null,
   "capacity": "74 min",
@@ -230,5 +228,6 @@
       ],
       "runtime": null
     }
-  ]
+  ],
+  "page": "discs/md-001.html"
 }
