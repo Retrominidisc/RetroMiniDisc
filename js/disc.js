@@ -58,40 +58,63 @@ async function loadDisc() {
     document.getElementById("disc-id").textContent =
       disc.id;
 
+
+    /*
+     * Media information.
+     *
+     * Brand is optional because some older records
+     * may not have it entered yet.
+     */
+
+    const brand = disc.brand
+      ? `${disc.brand} `
+      : "";
+
+    const capacity = disc.capacity || "";
+
     document.getElementById("disc-media").textContent =
-      `${disc.brand} ${disc.capacity.toUpperCase()} MD`;
-
-    document.getElementById("disc-mode").innerHTML =
-      `${disc.recording_mode.toUpperCase()}<small>≈${disc.recording_time.toUpperCase()}</small>`;
-
-    document.getElementById("disc-bitrate").textContent =
-      disc.bitrate.toUpperCase();
-
-    document.getElementById("disc-groups").textContent =
-      String(disc.groups.length).padStart(2, "0");
+      `${brand}${capacity} MD`.trim();
 
 
     /*
-     * Calculate the total actual runtime of everything
-     * recorded on the physical disc.
+     * Recording mode and available recording time.
      */
 
-    const totalMinutes = disc.groups.reduce(
-      (total, group) => {
+    const recordingMode =
+      disc.recording_mode || "";
 
-        const match = String(group.runtime).match(/\d+/);
+    const recordingTime =
+      disc.recording_time || "";
 
-        return total + (
-          match ? parseInt(match[0]) : 0
-        );
+    document.getElementById("disc-mode").innerHTML =
+      `${recordingMode.toUpperCase()}${
+        recordingTime
+          ? `<small>≈${recordingTime.toUpperCase()}</small>`
+          : ""
+      }`;
 
-      },
-      0
-    );
+
+    /*
+     * Bitrate.
+     */
+
+    document.getElementById("disc-bitrate").textContent =
+      disc.bitrate
+        ? disc.bitrate.toUpperCase()
+        : "—";
 
 
-    document.getElementById("disc-used").textContent =
-      `≈${totalMinutes} MIN`;
+    /*
+     * Number of Groups.
+     */
+
+    const groups =
+      Array.isArray(disc.groups)
+        ? disc.groups
+        : [];
+
+    document.getElementById("disc-groups").textContent =
+      String(groups.length).padStart(2, "0");
 
 
     /*
@@ -102,7 +125,9 @@ async function loadDisc() {
       disc.id;
 
     document.getElementById("disc-description").textContent =
-      `${disc.groups.length} ${disc.groups.length === 1 ? "group" : "groups"} recorded on this physical MiniDisc.`;
+      `${groups.length} ${
+        groups.length === 1 ? "group" : "groups"
+      } recorded on this physical MiniDisc.`;
 
 
     /*
@@ -114,10 +139,11 @@ async function loadDisc() {
 
 
     groupsContainer.innerHTML =
-      disc.groups.map((group, index) => {
+      groups.map((group, index) => {
 
         const groupNumber =
           String(index + 1).padStart(2, "0");
+
 
         const groupType =
           group.type
@@ -125,17 +151,28 @@ async function loadDisc() {
             : "GROUP";
 
 
+        const artist =
+          group.artist || "";
+
+
+        const title =
+          group.title || "Untitled";
+
+
         /*
          * Build the track list.
          */
 
         const tracks =
-          group.tracks || [];
+          Array.isArray(group.tracks)
+            ? group.tracks
+            : [];
 
 
         const trackList =
           tracks.length > 0
             ? `
+
               <section class="tracklist">
 
                 <div class="section-heading">
@@ -146,22 +183,94 @@ async function loadDisc() {
 
                   <span>
                     ${tracks.length}
-                    ${tracks.length === 1 ? "TRACK" : "TRACKS"}
+                    ${tracks.length === 1
+                      ? "TRACK"
+                      : "TRACKS"}
                   </span>
 
                 </div>
 
+
                 <ol>
 
-                  ${tracks.map(track => `
-                    <li>
-                      ${track}
-                    </li>
-                  `).join("")}
+                  ${tracks.map(track => {
+
+                    /*
+                     * Tracks are stored as objects:
+                     *
+                     * number
+                     * title
+                     * artist
+                     * album
+                     */
+
+                    const trackTitle =
+                      typeof track === "string"
+                        ? track
+                        : track.title || "Untitled";
+
+
+                    const trackArtist =
+                      typeof track === "object"
+                        ? track.artist
+                        : null;
+
+
+                    const trackAlbum =
+                      typeof track === "object"
+                        ? track.album
+                        : null;
+
+
+                    let trackMeta = "";
+
+
+                    if (trackArtist && trackAlbum) {
+
+                      trackMeta =
+                        `${trackArtist} · ${trackAlbum}`;
+
+                    } else if (trackArtist) {
+
+                      trackMeta =
+                        trackArtist;
+
+                    } else if (trackAlbum) {
+
+                      trackMeta =
+                        trackAlbum;
+
+                    }
+
+
+                    return `
+
+                      <li>
+
+                        <div class="track-title">
+                          ${trackTitle}
+                        </div>
+
+                        ${
+                          trackMeta
+                            ? `
+                              <div class="track-meta">
+                                ${trackMeta}
+                              </div>
+                            `
+                            : ""
+                        }
+
+                      </li>
+
+                    `;
+
+                  }).join("")}
 
                 </ol>
 
               </section>
+
             `
             : "";
 
@@ -193,16 +302,24 @@ async function loadDisc() {
                 ${groupType}
               </div>
 
-              <h2>
-                ${group.artist}
-              </h2>
+
+              ${
+                artist
+                  ? `
+                    <h2>
+                      ${artist}
+                    </h2>
+                  `
+                  : ""
+              }
 
 
               <div class="album-heading">
 
                 <div class="album-title">
-                  ${group.title}
+                  ${title}
                 </div>
+
 
                 ${
                   group.release_year
@@ -238,7 +355,7 @@ async function loadDisc() {
 
   } catch (error) {
 
-    console.error(error);
+    console.error("RetroMiniDisc disc error:", error);
 
     document.getElementById("disc-eyebrow").textContent =
       "ARCHIVE ERROR";
@@ -247,9 +364,10 @@ async function loadDisc() {
       "Disc unavailable";
 
     document.getElementById("disc-description").textContent =
-      "The requested disc could not be found in the archive.";
+      error.message;
 
-    document.getElementById("groups").innerHTML = "";
+    document.getElementById("groups").innerHTML =
+      "";
 
   }
 
