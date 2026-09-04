@@ -429,6 +429,34 @@ body {
 }
 
 
+/* ALBUM TRACK LIST */
+
+.tracklist-album li {
+  grid-template-rows: auto;
+}
+
+.tracklist-album li::before {
+  grid-row: 1;
+}
+
+.tracklist-album .track-title {
+  grid-row: 1;
+  align-self: center;
+  padding-bottom: 0;
+}
+
+
+/* COMPILATION TRACK LIST */
+
+.tracklist-compilation li {
+  grid-template-rows: auto auto;
+}
+
+.tracklist-compilation li::before {
+  grid-row: 1 / span 2;
+}
+
+
 /* BACK NAVIGATION */
 
 .back {
