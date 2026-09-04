@@ -280,11 +280,22 @@ body {
 }
 
 
+/* GROUP BLOCK */
+
+.group-block {
+  margin-top: 28px;
+}
+
+.group-block:first-child {
+  margin-top: 24px;
+}
+
+
 /* GROUP CARD */
 
 .content-card {
   position: relative;
-  margin-top: 24px;
+  margin-top: 0;
   background: #eceeeb;
   border: 1px solid #a6acad;
   box-shadow:
@@ -323,7 +334,7 @@ body {
 
 .tracklist {
   position: relative;
-  margin-top: 24px;
+  margin-top: 10px;
   padding: 0;
   background: #eeece4;
   border: 1px solid #b9b8b0;
