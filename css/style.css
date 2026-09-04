@@ -244,20 +244,32 @@ body {
   letter-spacing: .5px;
 }
 
-/* TRACK LIST */
+/* TRACK LIST — MINI-DISC INSERT CARD */
 
 .tracklist {
-  background: #eceeeb;
-  border: 1px solid #9da5a7;
-  box-shadow: 4px 4px 0 rgba(70,78,82,.18);
+  position: relative;
+  margin-top: 24px;
+  padding: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      rgba(91, 104, 108, .14) 32px
+    ),
+    #eeece4;
+  border: 1px solid #b9b8b0;
+  box-shadow:
+    4px 4px 0 rgba(70, 78, 82, .14),
+    inset 0 0 18px rgba(80, 75, 60, .04);
 }
 
 .section-heading {
   display: flex;
   justify-content: space-between;
-  padding: 12px 16px;
-  background: #d0d4d3;
-  border-bottom: 1px solid #9da5a7;
+  padding: 13px 16px;
+  background: rgba(218, 219, 214, .72);
+  border-bottom: 1px solid #b9b8b0;
   font-family: "Courier New", monospace;
   font-size: 10px;
   letter-spacing: 2px;
@@ -274,21 +286,25 @@ body {
 .tracklist li {
   display: grid;
   grid-template-columns: 48px 1fr;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 16px;
   counter-increment: tracks;
-  padding: 13px 16px;
-  border-bottom: 1px solid #d0d4d3;
-  line-height: 1.4;
+  border-bottom: none;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  line-height: 32px;
+  color: #34383a;
 }
 
 .tracklist li:last-child {
-  border-bottom: none;
+  padding-bottom: 2px;
 }
 
 .tracklist li::before {
   content: counter(tracks, decimal-leading-zero);
-  font-family: "Courier New", monospace;
   font-size: 11px;
-  color: #697479;
+  color: #727878;
 }
 
 /* BACK NAVIGATION */
