@@ -124,11 +124,6 @@ async function loadDisc() {
     document.getElementById("disc-title").textContent =
       disc.id;
 
-    document.getElementById("disc-description").textContent =
-      `${groups.length} ${
-        groups.length === 1 ? "group" : "groups"
-      } recorded on this physical MiniDisc.`;
-
 
     /*
      * Look up an album's original release year
