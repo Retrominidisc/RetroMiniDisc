@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>MD-001 — Queen — A Night at the Opera</title>
+  <title>RetroMiniDisc — Disc Archive</title>
 
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -14,7 +14,6 @@
 
   <main class="shell">
 
-
     <header class="masthead">
 
       <div class="brand">
@@ -22,7 +21,7 @@
       </div>
 
       <div class="tagline">
-        DISC ARCHIVE / MD-001
+        DISC ARCHIVE
       </div>
 
     </header>
@@ -32,16 +31,16 @@
 
     <section class="hero">
 
-      <div class="eyebrow">
-        DISC ARCHIVE / MD-001
+      <div class="eyebrow" id="disc-eyebrow">
+        LOADING...
       </div>
 
-      <h1>
+      <h1 id="disc-title">
         MiniDisc
       </h1>
 
-      <p>
-        Physical disc record and groups.
+      <p id="disc-description">
+        Loading disc record...
       </p>
 
     </section>
@@ -53,152 +52,46 @@
 
       <div class="spec">
         <span>DISC</span>
-        <strong>MD-001</strong>
+        <strong id="disc-id">—</strong>
       </div>
 
       <div class="spec">
         <span>MEDIA</span>
-        <strong>TDK 74 MIN MD</strong>
+        <strong id="disc-media">—</strong>
       </div>
 
       <div class="spec">
         <span>MODE</span>
-        <strong>
-          HI-SP
-          <small>≈2 HR 10 MIN</small>
+        <strong id="disc-mode">
+          —
         </strong>
       </div>
 
       <div class="spec">
         <span>BITRATE</span>
-        <strong>256 KBPS</strong>
+        <strong id="disc-bitrate">—</strong>
       </div>
 
       <div class="spec">
         <span>GROUPS</span>
-        <strong>01</strong>
+        <strong id="disc-groups">—</strong>
       </div>
 
       <div class="spec">
         <span>USED</span>
-        <strong>≈43 MIN</strong>
+        <strong id="disc-used">—</strong>
       </div>
 
     </section>
 
 
-    <!-- GROUP 01 -->
+    <!-- GROUPS -->
 
-    <section class="content-card">
+    <section id="groups">
 
-      <div class="section-heading">
-
-        <span>
-          GROUP / 01
-        </span>
-
-        <span>
-          ALBUM
-        </span>
-
-      </div>
-
-
-      <div class="content-heading">
-
-        <div class="group-type">
-          ALBUM
-        </div>
-
-        <h2>
-          Queen
-        </h2>
-
-        <div class="album-heading">
-
-          <div class="album-title">
-            A Night at the Opera
-          </div>
-
-          <div class="release-year">
-            1975
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- GROUP 01 TRACK LIST -->
-
-    <section class="tracklist">
-
-      <div class="section-heading">
-
-        <span>
-          TRACK LIST
-        </span>
-
-        <span>
-          12 TRACKS
-        </span>
-
-      </div>
-
-
-      <ol>
-
-        <li>
-          Death on Two Legs (Dedicated to...)
-        </li>
-
-        <li>
-          Lazing on a Sunday Afternoon
-        </li>
-
-        <li>
-          I'm in Love with My Car
-        </li>
-
-        <li>
-          You're My Best Friend
-        </li>
-
-        <li>
-          '39
-        </li>
-
-        <li>
-          Sweet Lady
-        </li>
-
-        <li>
-          Seaside Rendezvous
-        </li>
-
-        <li>
-          The Prophet's Song
-        </li>
-
-        <li>
-          Love of My Life
-        </li>
-
-        <li>
-          Good Company
-        </li>
-
-        <li>
-          Bohemian Rhapsody
-        </li>
-
-        <li>
-          God Save the Queen
-        </li>
-
-      </ol>
+      <p class="loading">
+        LOADING GROUPS...
+      </p>
 
     </section>
 
@@ -214,12 +107,14 @@
     </nav>
 
 
-    <footer>
-      RETROMINIDISC · MD-001
+    <footer id="disc-footer">
+      RETROMINIDISC
     </footer>
 
-
   </main>
+
+
+  <script src="../js/disc.js"></script>
 
 </body>
 </html>
