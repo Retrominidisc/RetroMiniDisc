@@ -298,11 +298,6 @@ async function loadDisc() {
 
             <div class="content-heading">
 
-              <div class="group-type">
-                ${groupType}
-              </div>
-
-
               ${
                 artist
                   ? `
