@@ -1,0 +1,18 @@
+{
+  "discs": [
+    {
+      "id": "MD-001",
+      "artist": "Queen",
+      "album": "A Night at the Opera",
+      "release_year": 1975,
+      "media": "Standard MiniDisc",
+      "capacity": "74 minutes",
+      "recording_mode": "Hi-SP",
+      "bitrate": "256 kbps",
+      "tracks": 12,
+      "runtime": "43 minutes",
+      "source": "Album copy",
+      "page": "discs/md-001.html"
+    }
+  ]
+}
