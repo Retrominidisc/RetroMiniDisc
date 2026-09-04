@@ -2,18 +2,219 @@
   "discs": [
     {
       "id": "MD-001",
-      "brand": "Sony",
+      "brand": null,
       "capacity": "74 min",
       "recording_mode": "Hi-SP",
       "recording_time": "74 min",
       "bitrate": "256 kbps",
       "groups": [
         {
+          "type": "COMPILATION",
+          "artist": null,
+          "title": "On Repeat",
+          "release_year": null,
+          "tracks": [
+            {
+              "number": 1,
+              "title": "You're Still The One",
+              "artist": "Shania Twain",
+              "album": "Come On Over"
+            },
+            {
+              "number": 2,
+              "title": "Die Happy",
+              "artist": "Holly Humberstone",
+              "album": "Cruel World"
+            },
+            {
+              "number": 3,
+              "title": "Down Side of Me (Live)",
+              "artist": "Chvrches",
+              "album": "Every Open Eye"
+            },
+            {
+              "number": 4,
+              "title": "Emmylou",
+              "artist": "First Aid Kit",
+              "album": "The Lion's Roar"
+            },
+            {
+              "number": 5,
+              "title": "How",
+              "artist": "Lisa Loeb",
+              "album": "Twister"
+            },
+            {
+              "number": 6,
+              "title": "I'm a Song (Live)",
+              "artist": "Stephen Wilson Jr.",
+              "album": "Son of Dad"
+            },
+            {
+              "number": 7,
+              "title": "It's Time",
+              "artist": "Imagine Dragons",
+              "album": "It's Time"
+            },
+            {
+              "number": 8,
+              "title": "Only Time",
+              "artist": "Enya",
+              "album": "A Day Without Rain"
+            },
+            {
+              "number": 9,
+              "title": "Paper Planes",
+              "artist": "M.I.A.",
+              "album": "Kala"
+            },
+            {
+              "number": 10,
+              "title": "Stand By Me (Live)",
+              "artist": "Stephen Wilson Jr.",
+              "album": "Son of Dad"
+            },
+            {
+              "number": 11,
+              "title": "Blah Blah Blah",
+              "artist": "Armin van Buuren",
+              "album": "Balance"
+            }
+          ],
+          "runtime": null
+        },
+        {
+          "type": "COMPILATION",
+          "artist": null,
+          "title": "Country",
+          "release_year": null,
+          "tracks": [
+            {
+              "number": 1,
+              "title": "Follow Your Arrow",
+              "artist": "Kacey Musgraves",
+              "album": "Same Trailer Different Park"
+            },
+            {
+              "number": 2,
+              "title": "Emmylou",
+              "artist": "First Aid Kit",
+              "album": "The Lion's Roar"
+            },
+            {
+              "number": 3,
+              "title": "Haunted",
+              "artist": "Taylor Swift",
+              "album": "Speak Now"
+            },
+            {
+              "number": 4,
+              "title": "You're Still The One",
+              "artist": "Shania Twain",
+              "album": "Come On Over"
+            },
+            {
+              "number": 5,
+              "title": "I'm Doing Alright",
+              "artist": "Jacob Lyda",
+              "album": "I'm Doing Alright"
+            },
+            {
+              "number": 6,
+              "title": "Jordan",
+              "artist": "Bellowhead",
+              "album": "Burlesque"
+            },
+            {
+              "number": 7,
+              "title": "Across The Line",
+              "artist": "Bellowhead",
+              "album": "Burlesque"
+            },
+            {
+              "number": 8,
+              "title": "Fire Marango",
+              "artist": "Bellowhead",
+              "album": "Burlesque"
+            },
+            {
+              "number": 9,
+              "title": "Rochdale Coconut Dance",
+              "artist": "Bellowhead",
+              "album": "e.p.onymous"
+            }
+          ],
+          "runtime": null
+        },
+        {
+          "type": "COMPILATION",
+          "artist": "Chvrches",
+          "title": "Chvrches",
+          "release_year": null,
+          "tracks": [
+            {
+              "number": 1,
+              "title": "Tightrope",
+              "artist": "Chvrches",
+              "album": null
+            },
+            {
+              "number": 2,
+              "title": "What Do You Mean",
+              "artist": "Chvrches",
+              "album": null
+            },
+            {
+              "number": 3,
+              "title": "Cosplay the Hard Way",
+              "artist": "Chvrches",
+              "album": null
+            },
+            {
+              "number": 4,
+              "title": "Gun (Live Studio Brussels)",
+              "artist": "Chvrches",
+              "album": null
+            }
+          ],
+          "runtime": null
+        },
+        {
           "type": "ALBUM",
-          "artist": "Various Artists",
-          "title": "Various",
-          "release_year": "",
-          "tracks": []
+          "artist": "Let's Eat Grandma",
+          "title": "I'm All Ears",
+          "release_year": null,
+          "tracks": [
+            {
+              "number": 1,
+              "title": "Whitewater"
+            },
+            {
+              "number": 2,
+              "title": "Hot Pink"
+            },
+            {
+              "number": 3,
+              "title": "It's Not Just Me"
+            },
+            {
+              "number": 4,
+              "title": "Falling Into Me"
+            },
+            {
+              "number": 5,
+              "title": "I Will Be Waiting"
+            },
+            {
+              "number": 6,
+              "title": "Ava"
+            },
+            {
+              "number": 7,
+              "title": "Donnie Darko"
+            }
+          ],
+          "runtime": null
         }
       ],
       "page": "discs/md-001.html"
@@ -33,61 +234,51 @@
           "release_year": "1975",
           "tracks": [
             {
-              "title": "Death on Two Legs (Dedicated to...)",
-              "artist": "Queen",
-              "album": "A Night at the Opera"
+              "number": 1,
+              "title": "Death on Two Legs (Dedicated to...)"
             },
             {
-              "title": "Lazing on a Sunday Afternoon",
-              "artist": "Queen",
-              "album": "A Night at the Opera"
+              "number": 2,
+              "title": "Lazing on a Sunday Afternoon"
             },
             {
-              "title": "I'm in Love with My Car",
-              "artist": "Queen",
-              "album": "A Night at the Opera"
+              "number": 3,
+              "title": "I'm in Love with My Car"
             },
             {
-              "title": "You're My Best Friend",
-              "artist": "Queen",
-              "album": "A Night at the Opera"
+              "number": 4,
+              "title": "You're My Best Friend"
             },
             {
-              "title": "'39",
-              "artist": "Queen",
-              "album": "A Night at the Opera"
+              "number": 5,
+              "title": "'39"
             },
             {
-              "title": "Sweet Lady",
-              "artist": "Queen",
-              "album": "A Night at the Opera"
+              "number": 6,
+              "title": "Sweet Lady"
             },
             {
-              "title": "Seaside Rendezvous",
-              "artist": "Queen",
-              "album": "A Night at the Opera"
+              "number": 7,
+              "title": "Seaside Rendezvous"
             },
             {
-              "title": "The Prophet's Song",
-              "artist": "Queen",
-              "album": "A Night at the Opera"
+              "number": 8,
+              "title": "The Prophet's Song"
             },
             {
-              "title": "Love of My Life",
-              "artist": "Queen",
-              "album": "A Night at the Opera"
+              "number": 9,
+              "title": "Love of My Life"
             },
             {
-              "title": "Good Company",
-              "artist": "Queen",
-              "album": "A Night at the Opera"
+              "number": 10,
+              "title": "Good Company"
             },
             {
-              "title": "Bohemian Rhapsody",
-              "artist": "Queen",
-              "album": "A Night at the Opera"
+              "number": 11,
+              "title": "Bohemian Rhapsody"
             }
-          ]
+          ],
+          "runtime": "43:08"
         }
       ],
       "page": "discs/md-002.html"
