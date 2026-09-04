@@ -7,29 +7,39 @@ async function loadArchive() {
 
   archive.innerHTML = data.discs.map(disc => {
 
-    const contents = disc.contents || [];
+    const groups = disc.groups || [];
 
     let summary = "";
 
-    if (contents.length === 1) {
+    if (groups.length === 1) {
       summary = `
-        <div class="eyebrow">${contents[0].artist}</div>
+        <div class="eyebrow">${groups[0].artist}</div>
 
         <h2>
-          <a href="${disc.page}">${contents[0].title}</a>
+          <a href="${disc.page}">${groups[0].title}</a>
         </h2>
       `;
-    } else {
+    } else if (groups.length > 1) {
       summary = `
-        <div class="eyebrow">${contents.length} CONTENTS</div>
+        <div class="eyebrow">${groups.length} GROUPS</div>
 
         <h2>
           <a href="${disc.page}">
-            ${contents[0].artist} — ${contents[0].title}
+            ${groups[0].artist} — ${groups[0].title}
           </a>
         </h2>
 
-        <p>+ ${contents.length - 1} MORE</p>
+        <p>+ ${groups.length - 1} MORE GROUP${groups.length - 1 === 1 ? "" : "S"}</p>
+      `;
+    } else {
+      summary = `
+        <div class="eyebrow">NO GROUPS</div>
+
+        <h2>
+          <a href="${disc.page}">
+            ${disc.id}
+          </a>
+        </h2>
       `;
     }
 
@@ -63,42 +73,50 @@ async function loadArchive() {
 
   }).join("");
 
+
+  const totalGroups = data.discs.reduce(
+    (total, disc) =>
+      total + (disc.groups || []).length,
+    0
+  );
+
+
   const totalTracks = data.discs.reduce(
     (total, disc) =>
       total +
-      (disc.contents || []).reduce(
-        (contentTotal, content) =>
-          contentTotal + (content.tracks || []).length,
+      (disc.groups || []).reduce(
+        (groupTotal, group) =>
+          groupTotal + (group.tracks || []).length,
         0
       ),
     0
   );
 
+
   const totalMinutes = data.discs.reduce(
     (total, disc) =>
       total +
-      (disc.contents || []).reduce(
-        (contentTotal, content) => {
-          const match = String(content.runtime).match(/\d+/);
-          return contentTotal + (match ? parseInt(match[0]) : 0);
+      (disc.groups || []).reduce(
+        (groupTotal, group) => {
+          const match = String(group.runtime).match(/\d+/);
+
+          return groupTotal + (
+            match ? parseInt(match[0]) : 0
+          );
         },
         0
       ),
     0
   );
 
-  const totalContents = data.discs.reduce(
-    (total, disc) =>
-      total + (disc.contents || []).length,
-    0
-  );
 
   stats.innerHTML = `
     <span>${data.discs.length} DISC${data.discs.length === 1 ? "" : "S"}</span>
-    <span>${totalContents} CONTENT${totalContents === 1 ? "" : "S"}</span>
-    <span>${totalTracks} TRACKS</span>
+    <span>${totalGroups} GROUP${totalGroups === 1 ? "" : "S"}</span>
+    <span>${totalTracks} TRACK${totalTracks === 1 ? "" : "S"}</span>
     <span>≈${totalMinutes} MINUTES</span>
   `;
 }
+
 
 loadArchive();
